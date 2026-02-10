@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Varun Oberoi</title>
+
+  <link href=https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap rel="stylesheet" />
+
+  <style>
+
+    body {
+
+      font-family: 'Inter', sans-serif;
+
+      margin: 0;
+
+      padding: 0;
+
+      background: #fff;
+
+      color: #1a1a1a;
+
+      line-height: 1.6;
+
+    }
+
+   
+
+    header {
+
+      padding: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background-color: #fafafa;
+
+    }
+
+   
+
+    section {
+
+      padding: 60px 20px;
+
+      text-align: center;
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+    }
+
+   
+
+    h2 {
+
+      font-size: 2rem;
+
+      margin-bottom: 40px;
+
+      font-weight: 800;
+
+    }
+
+   
+
+    .hero {
+
+      display: flex;
+
+      flex-direction: row;
+
+      align-items: center;
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      gap: 40px;
+
+      flex-wrap: wrap;
+
+      text-align: left;
+
+      padding: 80px 20px;
+
+    }
+
+    /* Founder photo + startup logo overlay */
+
+.founder-photo-wrapper {
+
+  position: relative;
+
+  width: 80px;
+
+  height: 80px;
+
+  margin: 0 auto 10px;
+
+}
+
+ 
+
+.founder-photo {
+
+  width: 80px;
+
+  height: 80px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid #eee;
+
+}
+
+ 
+
+.startup-overlay {
+
+  position: absolute;
+
+  bottom: 0;
+
+  right: 0;
+
+  width: 28px;
+
+  height: 28px;
+
+  object-fit: contain;
+
+  border-radius: 6px;
+
+  background: #fff;
+
+  border: 1px solid #ddd;
+
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+
+}
+
+ 
+
+    .hero-image-container {
+
+      flex: 0 0 35%;
+
+      max-width: 350px;
+
+      text-align: center;
+
+    }
+
+   
+
+    .hero img {
+
+      width: 100%;
+
+      border-radius: 20px;
+
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    }
+
+   
+
+    .hero-text {
+
+      flex: 1;
+
+    }
+
+   
+
+    .hero-text h1 {
+
+      font-size: 3rem;
+
+      font-weight: 800;
+
+      margin-bottom: 10px;
+
+      line-height: 1.2;
+
+    }
+
+   
+
+    .hero-text p {
+
+      font-size: 1.2rem;
+
+      color: #444;
+
+      margin-bottom: 25px;
+
+    }
+
+   
+
+    .cta-button {
+
+      background-color: #1a1a1a;
+
+      color: #fff;
+
+      padding: 15px 30px;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      font-weight: 600;
+
+      transition: background-color 0.3s;
+
+      display: inline-block;
+
+      margin-top: 10px;
+
+    }
+
+   
+
+    .cta-button:hover {
+
+      background-color: #444;
+
+    }
+
+   
+
+    @media (max-width: 768px) {
+
+      .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+      }
+
+   
+
+      .hero-image-container {
+
+        flex: none;
+
+        max-width: 80%;
+
+        margin-bottom: 30px;
+
+      }
+
+    }
+
+   
+
+    /* === About as 4×1 tiles + stronger reveal animation === */
+
+    .about-content {
+
+      max-width: 1000px;
+
+      margin: 0 auto;
+
+      text-align: left;
+
+    }
+
+    .about-tiles {
+
+      display: grid;
+
+      grid-template-columns: 1fr; /* 4 rows, 1 column across all sizes */
+
+      gap: 20px;
+
+    }
+
+    .about-tile {
+
+      background: #ffffff;
+
+      border-radius: 12px;
+
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+      padding: 22px;
+
+      font-size: 1.05rem;
+
+      color: #333;
+
+      transition: transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s ease, opacity .7s ease;
+
+    }
+
+    .about-tile:hover {
+
+      transform: translateY(-4px);
+
+      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+
+    }
+
+    /* reveal on scroll – more lift + slight scale for presence */
+
+    .reveal {
+
+      opacity: 0;
+
+      transform: translateY(28px) scale(0.98);
+
+    }
+
+    .reveal.in-view {
+
+      opacity: 1;
+
+      transform: translateY(0) scale(1);
+
+    }
+
+    /* clear stagger */
+
+    .about-tile:nth-child(1){ transition-delay: .00s; }
+
+    .about-tile:nth-child(2){ transition-delay: .12s; }
+
+    .about-tile:nth-child(3){ transition-delay: .24s; }
+
+    .about-tile:nth-child(4){ transition-delay: .36s; }
+
+ 
+
+    .help-section {
+
+      background-color: #f9f9ff;
+
+    }
+
+   
+
+    .help-cards {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+      gap: 20px;
+
+    }
+
+   
+
+    .help-card {
+
+      background-color: white;
+
+      border-radius: 16px;
+
+      padding: 20px;
+
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      text-align: center;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+    }
+
+ 
+
+    .help-card:hover {
+
+      transform: translateY(-8px);
+
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+
+    }
+
+   
+
+    .help-card img {
+
+      width: 50px;
+
+      height: 50px;
+
+      margin: 0 auto 10px;
+
+    }
+
+   
+
+    .help-card h3 {
+
+      font-size: 1.1rem;
+
+      margin-bottom: 5px;
+
+    }
+
+   
+
+    .help-card p {
+
+      font-size: 0.85rem;
+
+      margin-bottom: 0;
+
+    }
+
+   
+
+    .startups-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+      gap: 40px;
+
+    }
+
+   
+
+    .startup {
+
+      text-align: left;
+
+      background: #f4f4f4;
+
+      padding: 25px;
+
+      border-radius: 12px;
+
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: flex-start;
+
+      transition: transform 0.3s ease;
+
+    }
+
+   
+
+    .startup:hover {
+
+      transform: translateY(-5px);
+
+    }
+
+ 
+
+    .startup-header {
+
+      display: flex;
+
+      align-items: center;
+
+      margin-bottom: 15px;
+
+    }
+
+ 
+
+    .startup-logo {
+
+      width: 50px;
+
+      height: 50px;
+
+      object-fit: contain;
+
+      margin-right: 15px;
+
+    }
+
+   
+
+    .startup-title {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+ 
+
+    .startup-title h3 {
+
+      margin: 0;
+
+      font-size: 1.2rem;
+
+    }
+
+ 
+
+    .startup-title p {
+
+      margin: 0;
+
+      font-size: 0.9rem;
+
+      color: #666;
+
+    }
+
+   
+
+    .startup-description {
+
+      font-size: 1rem;
+
+      color: #333;
+
+    }
+
+   
+
+    .testimonial-section {
+
+      background-color: #f9f9f9;
+
+    }
+
+   
+
+    .testimonial {
+
+      background: white;
+
+      border-radius: 12px;
+
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+      padding: 20px;
+
+      margin: 10px;
+
+      max-width: 300px;
+
+      text-align: left;
+
+    }
+
+   
+
+    .testimonial-grid {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+    }
+
+   
+
+    .testimonial strong {
+
+      display: block;
+
+      margin-top: 10px;
+
+    }
+
+   
+
+    .contact-form {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 20px;
+
+      max-width: 800px;
+
+      margin: 0 auto;
+
+      padding: 40px;
+
+      background-color: #ffffff;
+
+      border-radius: 12px;
+
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    }
+
+   
+
+    .contact-form input,
+
+    .contact-form textarea {
+
+      width: 100%;
+
+      padding: 15px;
+
+      border: 1px solid #e0e0e0;
+
+      border-radius: 8px;
+
+      font-family: 'Inter', sans-serif;
+
+      font-size: 1rem;
+
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    }
+
+   
+
+    .contact-form input:focus,
+
+    .contact-form textarea:focus {
+
+      outline: none;
+
+      border-color: #1a1a1a;
+
+      box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.1);
+
+    }
+
+   
+
+    .contact-form textarea {
+
+      grid-column: 1 / -1;
+
+      resize: vertical;
+
+      min-height: 150px;
+
+    }
+
+   
+
+    .contact-form button {
+
+      grid-column: 1 / -1;
+
+      background-color: #1a1a1a;
+
+      color: #fff;
+
+      padding: 15px;
+
+      border: none;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-size: 1.1rem;
+
+      font-weight: 600;
+
+      transition: background-color 0.3s ease;
+
+    }
+
+   
+
+    .contact-form button:hover {
+
+      background-color: #444444;
+
+    }
+
+   
+
+    .contact-info {
+
+      margin-top: 40px;
+
+      font-size: 1.1rem;
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 30px;
+
+      flex-wrap: wrap;
+
+    }
+
+   
+
+    .contact-info p {
+
+      margin: 5px 0;
+
+      color: #555;
+
+      font-size: 1rem;
+
+    }
+
+   
+
+    .testimonial-images {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      margin-bottom: 15px;
+
+    }
+
+   
+
+    .founder-photo {
+
+      width: 60px;
+
+      height: 60px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+    }
+
+   
+
+    .startup-logo {
+
+      width: 40px;
+
+      height: 40px;
+
+      object-fit: contain;
+
+    }
+
+ 
+
+    /* === ONLY NEW: horizontal scroll + dots (keeps your card shapes) === */
+
+    .hscroll {
+
+      --gap: 40px;                  /* same as your original grid gap */
+
+      display: flex;
+
+      gap: var(--gap);
+
+      overflow-x: auto;
+
+      overflow-y: hidden;
+
+      -webkit-overflow-scrolling: touch;
+
+      scroll-behavior: smooth;
+
+      scroll-snap-type: x mandatory;
+
+      padding-bottom: 6px;
+
+      scrollbar-width: none;        /* Firefox hide */
+
+    }
+
+    .hscroll::-webkit-scrollbar { display: none; } /* WebKit hide */
+
+    .hscroll > * { scroll-snap-align: start; flex: 0 0 auto; }
+
+ 
+
+    /* ✅ Startups: show 3 cards per screen on desktop (like original grid) */
+
+    .hscroll-startups > .startup {
+
+      flex-basis: calc((100% - (2 * var(--gap))) / 3); /* 3 columns with the same 40px gaps */
+
+    }
+
+    /* Tablet: 2 cards */
+
+    @media (max-width: 900px) {
+
+      .hscroll-startups > .startup {
+
+        flex-basis: calc((100% - var(--gap)) / 2);
+
+      }
+
+    }
+
+    /* Mobile: 1 card */
+
+    @media (max-width: 600px) {
+
+      .hscroll-startups > .startup {
+
+        flex-basis: 100%;
+
+      }
+
+    }
+
+ 
+
+    /* Dots – cleaner, minimal aesthetic */
+
+    .carousel-dots {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      margin-top: 16px;
+
+    }
+
+    .carousel-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #fff;                 /* subtle, clean base */
+
+      border: 1px solid #e5e5e5;        /* light ring */
+
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+
+      padding: 0;
+
+      cursor: pointer;
+
+      transition: transform .12s ease, border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+
+    }
+
+    .carousel-dot:hover, .carousel-dot:focus-visible {
+
+      transform: scale(1.15);
+
+      border-color: #cfcfcf;
+
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+
+      outline: none;
+
+    }
+
+    .carousel-dot.active {
+
+      background: #1a1a1a;             /* solid fill for active */
+
+      border-color: #1a1a1a;
+
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
+    }
+
+    /* ✅ In the Media Section */
+
+.media-section {
+
+  background-color: #f9f9f9;
+
+  padding: 60px 20px;
+
+  text-align: center;
+
+}
+
+ 
+
+.media-cards {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 30px;
+
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+}
+
+ 
+
+.media-card {
+
+  background: #fff;
+
+  border-radius: 14px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+  overflow: hidden;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  display: flex;
+
+  flex-direction: column;
+
+  text-align: left;
+
+}
+
+ 
+
+.media-card:hover {
+
+  transform: translateY(-6px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
+}
+
+ 
+
+.media-image-wrapper {
+
+  position: relative;
+
+  height: 180px;
+
+  overflow: hidden;
+
+}
+
+ 
+
+.media-thumb {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+}
+
+ 
+
+.media-logo {
+
+  position: absolute;
+
+  top: 12px;
+
+  left: 12px;
+
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 8px;
+
+  object-fit: contain;
+
+  background: #fff;
+
+  border: 1px solid #eee;
+
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+}
+
+ 
+
+.media-content {
+
+  padding: 18px 20px 22px;
+
+}
+
+ 
+
+.media-content h3 {
+
+  margin: 0 0 8px;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
+}
+
+ 
+
+.media-content p {
+
+  margin: 0 0 10px;
+
+  font-size: 0.95rem;
+
+  color: #555;
+
+}
+
+ 
+
+.media-tag {
+
+  color: #00897b;
+
+  font-weight: 600;
+
+  font-size: 0.9rem;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+
+}
+
+ 
+
+.media-card:hover .media-tag {
+
+  color: #005f52;
+
+}
+
+ 
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+  .media-thumb { height: 150px; }
+
+  .media-content h3 { font-size: 1rem; }
+
+  .media-content p { font-size: 0.9rem; }
+
+}
+
+ 
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <section class="hero" id="home">
+
+      <div class="hero-image-container">
+
+        <img src="your-photo.jpg" alt="Varun Oberoi">
+
+      </div>
+
+      <div class="hero-text">
+
+        <h1>For student founders building what’s next.
+
+</h1>
+
+<h3>Real support | Big leaps | Long-term impact </h3>
+
+        <p>I’m Varun — a BCG strategy consultant and long-time advisor to student-led startups. For over 6 years, I’ve worked pro bono with student entrepreneurs — helping them shape ideas, build traction, and raise early capital. If you're a student founder building something real, I’m here to help you move faster, with clarity and confidence.</p>
+
+        <a href="#contact" class="cta-button">Get in Touch</a>
+
+      </div>
+
+    </section>
+
+  </header>
+
+ 
+
+  <section id="about">
+
+    <h2>About Me</h2>
+
+    <div class="about-content">
+
+       
+
+      <div class="about-tiles">
+
+        <div class="about-tile reveal">
+
+  <p>This began at Delhi Technological University, where I served as President of the Entrepreneurship Cell. I worked with student founders to shape ideas, test MVPs, build decks and prepare for pitch competitions.</p>
+
+  </div>
+
+  <div class="about-tile reveal">
+
+    <p>What started informally soon picked up momentum. Founders referred others, and I began advising teams across campuses on strategy, growth and investor readiness.</p>
+
+  </div>
+
+  <div class="about-tile reveal">
+
+    <p>Even after joining BCG and later pursuing my MBA at IIM Lucknow, I stayed involved. Over the years I have supported dozens of early-stage teams, many of which have grown into full-fledged startups.</p>
+
+  </div>
+
+  <div class="about-tile reveal">
+
+    <p>I continue to work with several of them today. This is a long-term commitment. With the right strategic input, student founders can go much further, much faster. I’m here to help them do that.</p>
+
+ 
+
+    </div>
+
+  </section>
+
+ 
+
+  <section class="help-section" id="services">
+
+    <h2>How I Can Help</h2>
+
+    <div class="help-cards">
+
+      <div class="help-card">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/1147/1147931.png alt="Idea Validation" />
+
+        <h3>Idea Validation</h3>
+
+        <p>Assess your startup idea with structured feedback and insights.</p>
+
+      </div>
+
+      <div class="help-card">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/3595/3595455.png alt="MVP Feedback" />
+
+        <h3>MVP Feedback</h3>
+
+        <p>Get actionable suggestions on your product’s first version.</p>
+
+      </div>
+
+      <div class="help-card">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/3050/3050525.png alt="Pitch Deck Review" />
+
+        <h3>Pitch Deck Review</h3>
+
+        <p>Refine your investor pitch and narrative to stand out.</p>
+
+      </div>
+
+      <div class="help-card">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/3211/3211644.png alt="Go-To-Market Guidance" />
+
+        <h3>Go-To-Market</h3>
+
+        <p>Design a solid plan to launch and reach early users.</p>
+
+      </div>
+
+      <div class="help-card">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/1024/1024446.png alt="Growth Strategy" />
+
+        <h3>Growth Strategy</h3>
+
+        <p>Develop a roadmap to scale users and build traction.</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+ 
+
+ <section id="startups">
+
+  <h2>Startups I've Worked With</h2>
+
+  <div class="hscroll hscroll-startups" id="startupsCarousel">
+
+ 
+
+    <!-- ✅ Real startups -->
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/billcut.png" alt="BillCut logo" class="startup-logo">
+
+        <div class="startup-title"><h3>BillCut</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Refined their pitch deck and financial model, which played a key role in securing their first round of funding.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/upschool.png" alt="UpSchool logo" class="startup-logo">
+
+        <div class="startup-title"><h3>UpSchool</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Helped define their user acquisition funnel and develop a scalable growth plan for their platform.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/india-against-covid.png" alt="India Against Covid logo" class="startup-logo">
+
+        <div class="startup-title"><h3>India Against Covid</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Advised on their partnership strategy, enabling them to expand their reach across India.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/justmyroots.png" alt="JustMyRoots logo" class="startup-logo">
+
+        <div class="startup-title"><h3>JustMyRoots</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Developed a detailed competitor analysis and product roadmap that informed their expansion into new markets.
+
+      </p>
+
+    </div>
+
+ 
+
+    <!-- 🔹 Lorem Ipsum placeholders -->
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/placeholder1.png" alt="Startup Placeholder" class="startup-logo">
+
+        <div class="startup-title"><h3>Lorem Startup 1</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit justo id lorem tincidunt, vel iaculis nisi malesuada.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/placeholder2.png" alt="Startup Placeholder" class="startup-logo">
+
+        <div class="startup-title"><h3>Lorem Startup 2</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Aenean id neque ut ante interdum placerat. Phasellus maximus urna in orci ultrices, eget fermentum odio aliquam.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/placeholder3.png" alt="Startup Placeholder" class="startup-logo">
+
+        <div class="startup-title"><h3>Lorem Startup 3</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/placeholder4.png" alt="Startup Placeholder" class="startup-logo">
+
+        <div class="startup-title"><h3>Lorem Startup 4</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/placeholder5.png" alt="Startup Placeholder" class="startup-logo">
+
+        <div class="startup-title"><h3>Lorem Startup 5</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.
+
+      </p>
+
+    </div>
+
+ 
+
+    <div class="startup">
+
+      <div class="startup-header">
+
+        <img src="images/startups/placeholder6.png" alt="Startup Placeholder" class="startup-logo">
+
+        <div class="startup-title"><h3>Lorem Startup 6</h3></div>
+
+      </div>
+
+      <p class="startup-description">
+
+        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid ex ea commodi.
+
+      </p>
+
+    </div>
+
+ 
+
+  </div>
+
+ 
+
+  <div class="carousel-dots" id="startupsDots" aria-label="Startups pagination">
+
+    <button class="carousel-dot" aria-label="Page 1"></button>
+
+    <button class="carousel-dot" aria-label="Page 2"></button>
+
+    <button class="carousel-dot" aria-label="Page 3"></button>
+
+    <button class="carousel-dot" aria-label="Page 4"></button>
+
+    <button class="carousel-dot" aria-label="Page 5"></button>
+
+  </div>
+
+</section>
+
+ 
+
+ 
+
+  <section class="testimonial-section">
+
+  <h2>What Founders Say</h2>
+
+  <div class="hscroll" id="testimonialsCarousel">
+
+   
+
+    <!-- ✅ Real testimonials -->
+
+    <div class="testimonial">
+
+      <div class="founder-photo-wrapper">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Tanish Sharma" class="founder-photo">
+
+        <img src="images/startups/billcut.png" alt="BillCut logo" class="startup-overlay">
+
+      </div>
+
+      <p>“The pitch deck Varun helped us build was a game-changer. We got multiple positive responses from investors.”</p>
+
+      <strong>Tanish Sharma</strong><br>
+
+      <em>Co-Founder,</em> BillCut
+
+    </div>
+
+ 
+
+    <div class="testimonial">
+
+      <div class="founder-photo-wrapper">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Uddeshya Khanna" class="founder-photo">
+
+        <img src="images/startups/upschool.png" alt="UpSchool logo" class="startup-overlay">
+
+      </div>
+
+      <p>“Varun helped us create a roadmap to scale our user base. His insights were invaluable.”</p>
+
+      <strong>Uddeshya Khanna</strong><br>
+
+      <em>Co-Founder,</em> UpSchool
+
+    </div>
+
+ 
+
+    <div class="testimonial">
+
+      <div class="founder-photo-wrapper">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Vedant Khandelwal" class="founder-photo">
+
+        <img src="images/startups/india-against-covid.png" alt="India Against Covid logo" class="startup-overlay">
+
+      </div>
+
+      <p>“Varun's strategic advice helped us form crucial partnerships and amplify our impact during a critical time.”</p>
+
+      <strong>Vedant Khandelwal</strong><br>
+
+      <em>Founder,</em> India Against Covid
+
+    </div>
+
+ 
+
+    <div class="testimonial">
+
+      <div class="founder-photo-wrapper">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Karan Sachdeva" class="founder-photo">
+
+        <img src="images/startups/justmyroots.png" alt="JustMyRoots logo" class="startup-overlay">
+
+      </div>
+
+      <p>“Varun's market analysis was a huge asset. It gave us a clear direction for our next phase of growth.”</p>
+
+      <strong>Karan Sachdeva</strong><br>
+
+      <em>Founding Member,</em> JustMyRoots
+
+    </div>
+
+ 
+
+    <!-- 🔹 Lorem Ipsum placeholders -->
+
+    <div class="testimonial">
+
+      <div class="founder-photo-wrapper">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Placeholder founder" class="founder-photo">
+
+        <img src="images/startups/placeholder1.png" alt="Placeholder logo" class="startup-overlay">
+
+      </div>
+
+      <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error.”</p>
+
+      <strong>Jane Doe</strong><br>
+
+      <em>Co-Founder,</em> Lorem Startup 1
+
+    </div>
+
+ 
+
+    <div class="testimonial">
+
+      <div class="founder-photo-wrapper">
+
+        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Placeholder found
