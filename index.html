@@ -1,1581 +1,1058 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-
-  <meta charset="UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Varun </title>
-
-  <link href=https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap rel="stylesheet" />
-
-  <style>
-
-    body {
-
-      font-family: 'Inter', sans-serif;
-
-      margin: 0;
-
-      padding: 0;
-
-      background: #fff;
-
-      color: #1a1a1a;
-
-      line-height: 1.6;
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varun Oberoi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    
+    <script>
+    if (localStorage.getItem('color-theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light'); // Set default explicitly
     }
-
-   
-
-    header {
-
-      padding: 0;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      background-color: #fafafa;
-
-    }
-
-   
-
-    section {
-
-      padding: 60px 20px;
-
-      text-align: center;
-
-      max-width: 1100px;
-
-      margin: 0 auto;
-
-    }
-
-   
-
-    h2 {
-
-      font-size: 2rem;
-
-      margin-bottom: 40px;
-
-      font-weight: 800;
-
-    }
-
-   
-
-    .hero {
-
-      display: flex;
-
-      flex-direction: row;
-
-      align-items: center;
-
-      max-width: 1100px;
-
-      margin: 0 auto;
-
-      gap: 40px;
-
-      flex-wrap: wrap;
-
-      text-align: left;
-
-      padding: 80px 20px;
-
-    }
-
-    /* Founder photo + startup logo overlay */
-
-.founder-photo-wrapper {
-
-  position: relative;
-
-  width: 80px;
-
-  height: 80px;
-
-  margin: 0 auto 10px;
-
-}
-
- 
-
-.founder-photo {
-
-  width: 80px;
-
-  height: 80px;
-
-  border-radius: 50%;
-
-  object-fit: cover;
-
-  border: 2px solid #eee;
-
-}
-
- 
-
-.startup-overlay {
-
-  position: absolute;
-
-  bottom: 0;
-
-  right: 0;
-
-  width: 28px;
-
-  height: 28px;
-
-  object-fit: contain;
-
-  border-radius: 6px;
-
-  background: #fff;
-
-  border: 1px solid #ddd;
-
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-
-}
-
- 
-
-    .hero-image-container {
-
-      flex: 0 0 35%;
-
-      max-width: 350px;
-
-      text-align: center;
-
-    }
-
-   
-
-    .hero img {
-
-      width: 100%;
-
-      border-radius: 20px;
-
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-
-    }
-
-   
-
-    .hero-text {
-
-      flex: 1;
-
-    }
-
-   
-
-    .hero-text h1 {
-
-      font-size: 3rem;
-
-      font-weight: 800;
-
-      margin-bottom: 10px;
-
-      line-height: 1.2;
-
-    }
-
-   
-
-    .hero-text p {
-
-      font-size: 1.2rem;
-
-      color: #444;
-
-      margin-bottom: 25px;
-
-    }
-
-   
-
-    .cta-button {
-
-      background-color: #1a1a1a;
-
-      color: #fff;
-
-      padding: 15px 30px;
-
-      border-radius: 8px;
-
-      text-decoration: none;
-
-      font-weight: 600;
-
-      transition: background-color 0.3s;
-
-      display: inline-block;
-
-      margin-top: 10px;
-
-    }
-
-   
-
-    .cta-button:hover {
-
-      background-color: #444;
-
-    }
-
-   
-
-    @media (max-width: 768px) {
-
-      .hero {
-
-        flex-direction: column;
-
-        text-align: center;
-
-      }
-
-   
-
-      .hero-image-container {
-
-        flex: none;
-
-        max-width: 80%;
-
-        margin-bottom: 30px;
-
-      }
-
-    }
-
-   
-
-    /* === About as 4×1 tiles + stronger reveal animation === */
-
-    .about-content {
-
-      max-width: 1000px;
-
-      margin: 0 auto;
-
-      text-align: left;
-
-    }
-
-    .about-tiles {
-
-      display: grid;
-
-      grid-template-columns: 1fr; /* 4 rows, 1 column across all sizes */
-
-      gap: 20px;
-
-    }
-
-    .about-tile {
-
-      background: #ffffff;
-
-      border-radius: 12px;
-
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-      padding: 22px;
-
-      font-size: 1.05rem;
-
-      color: #333;
-
-      transition: transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s ease, opacity .7s ease;
-
-    }
-
-    .about-tile:hover {
-
-      transform: translateY(-4px);
-
-      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
-
-    }
-
-    /* reveal on scroll – more lift + slight scale for presence */
-
-    .reveal {
-
-      opacity: 0;
-
-      transform: translateY(28px) scale(0.98);
-
-    }
-
-    .reveal.in-view {
-
-      opacity: 1;
-
-      transform: translateY(0) scale(1);
-
-    }
-
-    /* clear stagger */
-
-    .about-tile:nth-child(1){ transition-delay: .00s; }
-
-    .about-tile:nth-child(2){ transition-delay: .12s; }
-
-    .about-tile:nth-child(3){ transition-delay: .24s; }
-
-    .about-tile:nth-child(4){ transition-delay: .36s; }
-
- 
-
-    .help-section {
-
-      background-color: #f9f9ff;
-
-    }
-
-   
-
-    .help-cards {
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-      gap: 20px;
-
-    }
-
-   
-
-    .help-card {
-
-      background-color: white;
-
-      border-radius: 16px;
-
-      padding: 20px;
-
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-
-      transition: transform 0.3s, box-shadow 0.3s;
-
-      text-align: center;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-    }
-
- 
-
-    .help-card:hover {
-
-      transform: translateY(-8px);
-
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-
-    }
-
-   
-
-    .help-card img {
-
-      width: 50px;
-
-      height: 50px;
-
-      margin: 0 auto 10px;
-
-    }
-
-   
-
-    .help-card h3 {
-
-      font-size: 1.1rem;
-
-      margin-bottom: 5px;
-
-    }
-
-   
-
-    .help-card p {
-
-      font-size: 0.85rem;
-
-      margin-bottom: 0;
-
-    }
-
-   
-
-    .startups-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-      gap: 40px;
-
-    }
-
-   
-
-    .startup {
-
-      text-align: left;
-
-      background: #f4f4f4;
-
-      padding: 25px;
-
-      border-radius: 12px;
-
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: flex-start;
-
-      transition: transform 0.3s ease;
-
-    }
-
-   
-
-    .startup:hover {
-
-      transform: translateY(-5px);
-
-    }
-
- 
-
-    .startup-header {
-
-      display: flex;
-
-      align-items: center;
-
-      margin-bottom: 15px;
-
-    }
-
- 
-
-    .startup-logo {
-
-      width: 50px;
-
-      height: 50px;
-
-      object-fit: contain;
-
-      margin-right: 15px;
-
-    }
-
-   
-
-    .startup-title {
-
-      display: flex;
-
-      flex-direction: column;
-
-    }
-
- 
-
-    .startup-title h3 {
-
-      margin: 0;
-
-      font-size: 1.2rem;
-
-    }
-
- 
-
-    .startup-title p {
-
-      margin: 0;
-
-      font-size: 0.9rem;
-
-      color: #666;
-
-    }
-
-   
-
-    .startup-description {
-
-      font-size: 1rem;
-
-      color: #333;
-
-    }
-
-   
-
-    .testimonial-section {
-
-      background-color: #f9f9f9;
-
-    }
-
-   
-
-    .testimonial {
-
-      background: white;
-
-      border-radius: 12px;
-
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-
-      padding: 20px;
-
-      margin: 10px;
-
-      max-width: 300px;
-
-      text-align: left;
-
-    }
-
-   
-
-    .testimonial-grid {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      justify-content: center;
-
-    }
-
-   
-
-    .testimonial strong {
-
-      display: block;
-
-      margin-top: 10px;
-
-    }
-
-   
-
-    .contact-form {
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 20px;
-
-      max-width: 800px;
-
-      margin: 0 auto;
-
-      padding: 40px;
-
-      background-color: #ffffff;
-
-      border-radius: 12px;
-
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-
-    }
-
-   
-
-    .contact-form input,
-
-    .contact-form textarea {
-
-      width: 100%;
-
-      padding: 15px;
-
-      border: 1px solid #e0e0e0;
-
-      border-radius: 8px;
-
-      font-family: 'Inter', sans-serif;
-
-      font-size: 1rem;
-
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-    }
-
-   
-
-    .contact-form input:focus,
-
-    .contact-form textarea:focus {
-
-      outline: none;
-
-      border-color: #1a1a1a;
-
-      box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.1);
-
-    }
-
-   
-
-    .contact-form textarea {
-
-      grid-column: 1 / -1;
-
-      resize: vertical;
-
-      min-height: 150px;
-
-    }
-
-   
-
-    .contact-form button {
-
-      grid-column: 1 / -1;
-
-      background-color: #1a1a1a;
-
-      color: #fff;
-
-      padding: 15px;
-
-      border: none;
-
-      border-radius: 8px;
-
-      cursor: pointer;
-
-      font-size: 1.1rem;
-
-      font-weight: 600;
-
-      transition: background-color 0.3s ease;
-
-    }
-
-   
-
-    .contact-form button:hover {
-
-      background-color: #444444;
-
-    }
-
-   
-
-    .contact-info {
-
-      margin-top: 40px;
-
-      font-size: 1.1rem;
-
-      display: flex;
-
-      justify-content: center;
-
-      gap: 30px;
-
-      flex-wrap: wrap;
-
-    }
-
-   
-
-    .contact-info p {
-
-      margin: 5px 0;
-
-      color: #555;
-
-      font-size: 1rem;
-
-    }
-
-   
-
-    .testimonial-images {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 10px;
-
-      margin-bottom: 15px;
-
-    }
-
-   
-
-    .founder-photo {
-
-      width: 60px;
-
-      height: 60px;
-
-      border-radius: 50%;
-
-      object-fit: cover;
-
-    }
-
-   
-
-    .startup-logo {
-
-      width: 40px;
-
-      height: 40px;
-
-      object-fit: contain;
-
-    }
-
- 
-
-    /* === ONLY NEW: horizontal scroll + dots (keeps your card shapes) === */
-
-    .hscroll {
-
-      --gap: 40px;                  /* same as your original grid gap */
-
-      display: flex;
-
-      gap: var(--gap);
-
-      overflow-x: auto;
-
-      overflow-y: hidden;
-
-      -webkit-overflow-scrolling: touch;
-
-      scroll-behavior: smooth;
-
-      scroll-snap-type: x mandatory;
-
-      padding-bottom: 6px;
-
-      scrollbar-width: none;        /* Firefox hide */
-
-    }
-
-    .hscroll::-webkit-scrollbar { display: none; } /* WebKit hide */
-
-    .hscroll > * { scroll-snap-align: start; flex: 0 0 auto; }
-
- 
-
-    /* ✅ Startups: show 3 cards per screen on desktop (like original grid) */
-
-    .hscroll-startups > .startup {
-
-      flex-basis: calc((100% - (2 * var(--gap))) / 3); /* 3 columns with the same 40px gaps */
-
-    }
-
-    /* Tablet: 2 cards */
-
-    @media (max-width: 900px) {
-
-      .hscroll-startups > .startup {
-
-        flex-basis: calc((100% - var(--gap)) / 2);
-
-      }
-
-    }
-
-    /* Mobile: 1 card */
-
-    @media (max-width: 600px) {
-
-      .hscroll-startups > .startup {
-
-        flex-basis: 100%;
-
-      }
-
-    }
-
- 
-
-    /* Dots – cleaner, minimal aesthetic */
-
-    .carousel-dots {
-
-      display: flex;
-
-      justify-content: center;
-
-      gap: 8px;
-
-      margin-top: 16px;
-
-    }
-
-    .carousel-dot {
-
-      width: 8px;
-
-      height: 8px;
-
-      border-radius: 50%;
-
-      background: #fff;                 /* subtle, clean base */
-
-      border: 1px solid #e5e5e5;        /* light ring */
-
-      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
-
-      padding: 0;
-
-      cursor: pointer;
-
-      transition: transform .12s ease, border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
-
-    }
-
-    .carousel-dot:hover, .carousel-dot:focus-visible {
-
-      transform: scale(1.15);
-
-      border-color: #cfcfcf;
-
-      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-
-      outline: none;
-
-    }
-
-    .carousel-dot.active {
-
-      background: #1a1a1a;             /* solid fill for active */
-
-      border-color: #1a1a1a;
-
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-
-    }
-
-    /* ✅ In the Media Section */
-
-.media-section {
-
-  background-color: #f9f9f9;
-
-  padding: 60px 20px;
-
-  text-align: center;
-
-}
-
- 
-
-.media-cards {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
-  gap: 30px;
-
-  max-width: 1000px;
-
-  margin: 0 auto;
-
-}
-
- 
-
-.media-card {
-
-  background: #fff;
-
-  border-radius: 14px;
-
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-  overflow: hidden;
-
-  text-decoration: none;
-
-  color: inherit;
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-  display: flex;
-
-  flex-direction: column;
-
-  text-align: left;
-
-}
-
- 
-
-.media-card:hover {
-
-  transform: translateY(-6px);
-
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-
-}
-
- 
-
-.media-image-wrapper {
-
-  position: relative;
-
-  height: 180px;
-
-  overflow: hidden;
-
-}
-
- 
-
-.media-thumb {
-
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-
-  display: block;
-
-}
-
- 
-
-.media-logo {
-
-  position: absolute;
-
-  top: 12px;
-
-  left: 12px;
-
-  width: 50px;
-
-  height: 50px;
-
-  border-radius: 8px;
-
-  object-fit: contain;
-
-  background: #fff;
-
-  border: 1px solid #eee;
-
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-
-}
-
- 
-
-.media-content {
-
-  padding: 18px 20px 22px;
-
-}
-
- 
-
-.media-content h3 {
-
-  margin: 0 0 8px;
-
-  font-size: 1.1rem;
-
-  font-weight: 700;
-
-}
-
- 
-
-.media-content p {
-
-  margin: 0 0 10px;
-
-  font-size: 0.95rem;
-
-  color: #555;
-
-}
-
- 
-
-.media-tag {
-
-  color: #00897b;
-
-  font-weight: 600;
-
-  font-size: 0.9rem;
-
-  text-decoration: none;
-
-  transition: color 0.2s ease;
-
-}
-
- 
-
-.media-card:hover .media-tag {
-
-  color: #005f52;
-
-}
-
- 
-
-/* Responsive */
-
-@media (max-width: 600px) {
-
-  .media-thumb { height: 150px; }
-
-  .media-content h3 { font-size: 1rem; }
-
-  .media-content p { font-size: 0.9rem; }
-
-}
-
- 
-
-  </style>
-
+    </script>
+
+    <style>
+        .bg-pattern-dots {
+            background-image: radial-gradient(circle at 1px 1px, #334155 1px, transparent 0);
+            background-size: 32px 32px;
+        }
+        .dark .bg-pattern-dots {
+            background-image: radial-gradient(circle at 1px 1px, #94a3b8 1px, transparent 0);
+        }
+        .bg-pattern-dots-light {
+            background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(2rem);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        textarea::-webkit-scrollbar { width: 8px; }
+        textarea::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark textarea::-webkit-scrollbar-track { background: #1e293b; }
+        textarea::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark textarea::-webkit-scrollbar-thumb { background: #475569; }
+    </style>
 </head>
+<body class="font-sans antialiased text-slate-900 bg-white dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-<body>
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[2px] bg-blue-800/80 dark:bg-blue-500/80 transition-all duration-150 ease-out" style="width: 0%"></div>
 
-  <header>
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="font-serif text-lg font-semibold text-slate-900 dark:text-white tracking-tight hover:text-blue-800 dark:hover:text-blue-400 transition-colors duration-200">
+                    Varun Oberoi
+                </a>
 
-    <section class="hero" id="home">
+                <div class="hidden md:flex items-center">
+                    <nav class="flex items-center gap-1">
+                        <a href="#about" class="nav-link px-3 py-2 text-sm transition-colors duration-200 rounded-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">About</a>
+                        <a href="#offerings" class="nav-link px-3 py-2 text-sm transition-colors duration-200 rounded-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Offerings</a>
+                        <a href="#portfolio" class="nav-link px-3 py-2 text-sm transition-colors duration-200 rounded-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Portfolio</a>
+                        <a href="#media" class="nav-link px-3 py-2 text-sm transition-colors duration-200 rounded-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Media</a>
+                        <a href="#testimonials" class="nav-link px-3 py-2 text-sm transition-colors duration-200 rounded-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Testimonials</a>
+                        <a href="#connect" class="nav-link px-3 py-2 text-sm transition-colors duration-200 rounded-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Connect</a>
 
-      <div class="hero-image-container">
+                    </nav>
 
-        <img src="your-photo.jpg" alt="Varun Oberoi">
+                    <button id="theme-toggle" type="button" class="ml-4 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-sm p-2 transition-colors">
+                        <i data-lucide="moon" id="theme-toggle-dark-icon" class="hidden h-5 w-5"></i>
+                        <i data-lucide="sun" id="theme-toggle-light-icon" class="hidden h-5 w-5"></i>
+                    </button>
+                </div>
 
+                <div class="md:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-sm p-2 transition-colors">
+                        <i data-lucide="moon" id="theme-toggle-dark-icon-mobile" class="hidden h-5 w-5"></i>
+                        <i data-lucide="sun" id="theme-toggle-light-icon-mobile" class="hidden h-5 w-5"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-btn" class="text-slate-700 dark:text-slate-300 p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors">
+                        <i data-lucide="menu" id="menu-icon" class="h-5 w-5"></i>
+                        <i data-lucide="x" id="close-icon" class="h-5 w-5 hidden"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-slate-100 dark:border-slate-800 mt-1 animate-fadeIn bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm absolute left-0 right-0 px-6 shadow-md rounded-b-lg">
+                <nav class="flex flex-col gap-1 pt-3">
+                    <a href="#about" class="mobile-nav-link px-3 py-2.5 text-sm rounded-md transition-colors duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">About</a>
+                    <a href="#offerings" class="mobile-nav-link px-3 py-2.5 text-sm rounded-md transition-colors duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Offerings</a>
+                    <a href="#portfolio" class="mobile-nav-link px-3 py-2.5 text-sm rounded-md transition-colors duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Portfolio</a>
+                    <a href="#media" class="mobile-nav-link px-3 py-2.5 text-sm rounded-md transition-colors duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Media</a>
+                    <a href="#testimonials" class="mobile-nav-link px-3 py-2.5 text-sm rounded-md transition-colors duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Testimonials</a>
+                    <a href="#connect" class="mobile-nav-link px-3 py-2.5 text-sm rounded-md transition-colors duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50">Connect</a>
+                    
+                    <a href="/resume.pdf" download="Vansh_Oberoi_Resume.pdf" class="flex items-center justify-between px-3 py-2.5 text-sm rounded-md transition-colors duration-200 text-blue-800 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 mt-1">
+                        Download CV <i data-lucide="download" class="h-4 w-4"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="min-h-[90vh] flex items-center pt-16 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
+            <div class="absolute inset-0 opacity-[0.02] dark:opacity-5 bg-pattern-dots"></div>
+            <div class="max-w-5xl mx-auto px-6 lg:px-8 w-full relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6 fade-in-up">
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-[2px] bg-blue-800 dark:bg-blue-500 rounded-full"></div>
+                                <p class="text-sm font-medium text-blue-800 dark:text-blue-400 tracking-wide uppercase">
+                                    Real support · Big leaps · Long-term impact
+                                </p>
+                            </div>
+                            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
+                                For student founders building what’s next
+                            </h1>
+                        </div>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
+                            I’m Varun — a BCG strategy consultant and long-time advisor to student-led startups. For over 6 years, I’ve worked pro bono with student entrepreneurs — helping them shape ideas, build traction, and raise early capital. If you're a student founder building something real, I’m here to help you move faster, with clarity and confidence.
+                        </p>
+                        
+                        <div class="flex flex-wrap items-center gap-3 pt-2">
+                            <a href="mailto:oberoivarun99@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-700 hover:text-blue-800 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-500 hover:shadow-sm transition-all duration-250">
+                                <i data-lucide="mail" class="h-4 w-4"></i> Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/oberoivarun/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-700 hover:text-blue-800 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-500 hover:shadow-sm transition-all duration-250">
+                                <i data-lucide="linkedin" class="h-4 w-4"></i> LinkedIn
+                            </a>
+                    
+                        </div>
+
+                        <div class="pt-4">
+                            <a href="#connect" class="inline-flex items-center justify-center bg-slate-900 dark:bg-blue-600 text-white hover:bg-slate-800 dark:hover:bg-blue-700 rounded-lg px-6 h-11 text-sm font-medium shadow-sm hover:shadow-md transition-all duration-250">
+                                Ready to Talk Stratergy
+                                <i data-lucide="arrow-down" class="ml-1 h-4 w-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 flex justify-center lg:justify-end fade-in-up" style="transition-delay: 200ms;">
+                        <div class="relative group">
+                            <div class="w-64 h-64 sm:w-72 sm:h-72 rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-lg group-hover:shadow-xl group-hover:border-slate-300 dark:group-hover:border-slate-500 transition-all duration-500 bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                                <img src="varun.png" alt="Vansh Oberoi" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'font-serif text-5xl font-bold text-slate-400 dark:text-slate-500\'>VO</span>';" />
+                            </div>
+                            <div class="absolute -bottom-3 -right-3 w-20 h-20 bg-blue-800/5 dark:bg-blue-500/10 rounded-xl -z-10 group-hover:bg-blue-800/10 dark:group-hover:bg-blue-500/20 transition-colors duration-500"></div>
+                            <div class="absolute -top-3 -left-3 w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-xl -z-10 transition-colors duration-300"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section id="about" class="py-20 bg-slate-50/70 dark:bg-slate-800/30 pt-28 -mt-8 transition-colors duration-300"> 
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="fade-in-up">
+                    <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">About Me</h2>
+                    <div class="w-12 h-0.5 bg-blue-800 dark:bg-blue-500 mb-10 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <div class="lg:col-span-2 space-y-5 fade-in-up" style="transition-delay: 100ms;">
+                        <div class="space-y-4 text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+                            <p>I'm a startup enthusiast and strategy consultant based in India. My journey started as the President of DTU’s Entrepreneurship Cell, where I helped budding campus founders bring their ideas to life.</p>
+                            <p>Since then, while working at BCG and pursuing my MBA from IIM Lucknow, I’ve continued to consult student-led and early-stage startups — pro bono — across strategy, growth, collaborations, and investor readiness.</p>
+                            <p>I believe student startups are scrappy, creative, and full of potential — they just need the right nudge. This is my way of giving back to the ecosystem that shaped me.</p>
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+
+
+       <section id="offerings" class="py-20 bg-slate-50/70 dark:bg-slate-800/30 pt-28 -mt-8 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        
+        <div class="fade-in-up">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
+                How I Can Help
+            </h2>
+            <div class="w-12 h-0.5 bg-blue-800 dark:bg-blue-500 mb-10 rounded-full"></div>
+        </div>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+            
+            <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 text-center">
+                <div class="text-4xl mb-4">🧠</div>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    Idea Validation
+                </h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Assess your startup idea with structured feedback and insights.
+                </p>
+            </div>
+
+            
+            <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 text-center">
+                <div class="text-4xl mb-4">🍕</div>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    MVP Feedback
+                </h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Get actionable suggestions on your product’s first version.
+                </p>
+            </div>
+
+            
+            <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 text-center">
+                <div class="text-4xl mb-4">💬</div>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    Pitch Deck Review
+                </h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Refine your investor pitch and narrative to stand out.
+                </p>
+            </div>
+
+            
+            <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 text-center">
+                <div class="text-4xl mb-4">🏢</div>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    Go-To-Market
+                </h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Design a solid plan to launch and reach early users.
+                </p>
+            </div>
+
+            
+            <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 text-center">
+                <div class="text-4xl mb-4">📈</div>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    Growth Strategy
+                </h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Develop a roadmap to scale users and build traction.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+        
+
+<section id="portfolio" class="py-20 bg-slate-50/70 dark:bg-slate-800/30 transition-colors duration-300 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+    <!-- Section Heading -->
+    <div class="mb-12">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
+        Startups I've Worked With
+      </h2>
+      <div class="w-12 h-0.5 bg-blue-800 dark:bg-blue-500 rounded-full"></div>
+    </div>
+
+    <!-- Horizontal Scroll Container -->
+    <div id="startupsCarousel"
+         class="flex gap-6 overflow-x-auto scroll-smooth cursor-grab active:cursor-grabbing pb-4">
+
+      <!-- 1 -->
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="billcut.png" alt="BillCut logo" 
+               class="w-30 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            BillCut
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed items-center text-center">
+          Refined their pitch deck and financial model, securing their first round of funding.
+        </p>
       </div>
 
-      <div class="hero-text">
-
-        <h1>For student founders building what’s next.
-
-</h1>
-
-<h3>Long-term impact </h3>
-
-        <p>I’m Varun — a BCG strategy consultant and long-time advisor to student-led startups. For over 6 years, I’ve worked pro bono with student entrepreneurs — helping them shape ideas, build traction, and raise early capital. If you're a student founder building something real, I’m here to help you move faster, with clarity and confidence.</p>
-
-        <a href="#contact" class="cta-button">Get in Touch</a>
-
+      <!-- 2 -->
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="upschool.png" alt="UpSchool logo"
+               class="w-30 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            UpSchool
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed items-center text-center">
+          Defined their acquisition funnel and built a scalable growth strategy.
+        </p>
       </div>
 
-    </section>
+      <!-- 3 -->
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="IAC.png" alt="India Against Covid logo"
+               class="w-30 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            India Against Covid
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed items-center text-center">
+          Guided partnership strategy to expand nationwide reach.
+        </p>
+      </div>
 
-  </header>
+      <!-- 4 -->
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="JMR.jpg" alt="JustMyRoots logo"
+               class="w-30 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            JustMyRoots
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed items-center text-center ">
+          Built competitor analysis and roadmap for new market expansion.
+        </p>
+      </div>
 
- 
 
-  <section id="about">
+      
+      <!------5-------
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="images/startups/placeholder1.png" alt="Startup logo"
+               class="w-12 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            GrowthLabs
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+          Optimized user onboarding flow and improved activation rates.
+        </p>
+      </div>
 
-    <h2>About Me</h2>
+      -----6------- 
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="images/startups/placeholder2.png" alt="Startup logo"
+               class="w-12 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            ScaleEdge
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+          Designed GTM plan leading to strong early traction.
+        </p>
+      </div>
 
-    <div class="about-content">
+      -------7------
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="images/startups/placeholder3.png" alt="Startup logo"
+               class="w-12 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            MarketNova
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+          Structured growth experiments to accelerate revenue scaling.
+        </p>
+      </div>
+    -->
 
-       
-
-      <div class="about-tiles">
-
-        <div class="about-tile reveal">
-
-  <p>This began at Delhi Technological University, where I served as President of the Entrepreneurship Cell. I worked with student founders to shape ideas, test MVPs, build decks and prepare for pitch competitions.</p>
-
+    </div>
   </div>
-
-  <div class="about-tile reveal">
-
-    <p>What started informally soon picked up momentum. Founders referred others, and I began advising teams across campuses on strategy, growth and investor readiness.</p>
-
-  </div>
-
-  <div class="about-tile reveal">
-
-    <p>Even after joining BCG and later pursuing my MBA at IIM Lucknow, I stayed involved. Over the years I have supported dozens of early-stage teams, many of which have grown into full-fledged startups.</p>
-
-  </div>
-
-  <div class="about-tile reveal">
-
-    <p>I continue to work with several of them today. This is a long-term commitment. With the right strategic input, student founders can go much further, much faster. I’m here to help them do that.</p>
-
- 
-
-    </div>
-
-  </section>
-
- 
-
-  <section class="help-section" id="services">
-
-    <h2>How I Can Help</h2>
-
-    <div class="help-cards">
-
-      <div class="help-card">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/1147/1147931.png alt="Idea Validation" />
-
-        <h3>Idea Validation</h3>
-
-        <p>Assess your startup idea with structured feedback and insights.</p>
-
-      </div>
-
-      <div class="help-card">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/3595/3595455.png alt="MVP Feedback" />
-
-        <h3>MVP Feedback</h3>
-
-        <p>Get actionable suggestions on your product’s first version.</p>
-
-      </div>
-
-      <div class="help-card">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/3050/3050525.png alt="Pitch Deck Review" />
-
-        <h3>Pitch Deck Review</h3>
-
-        <p>Refine your investor pitch and narrative to stand out.</p>
-
-      </div>
-
-      <div class="help-card">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/3211/3211644.png alt="Go-To-Market Guidance" />
-
-        <h3>Go-To-Market</h3>
-
-        <p>Design a solid plan to launch and reach early users.</p>
-
-      </div>
-
-      <div class="help-card">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/1024/1024446.png alt="Growth Strategy" />
-
-        <h3>Growth Strategy</h3>
-
-        <p>Develop a roadmap to scale users and build traction.</p>
-
-      </div>
-
-    </div>
-
-  </section>
-
- 
-
- <section id="startups">
-
-  <h2>Startups I've Worked With</h2>
-
-  <div class="hscroll hscroll-startups" id="startupsCarousel">
-
- 
-
-    <!-- ✅ Real startups -->
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/billcut.png" alt="BillCut logo" class="startup-logo">
-
-        <div class="startup-title"><h3>BillCut</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Refined their pitch deck and financial model, which played a key role in securing their first round of funding.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/upschool.png" alt="UpSchool logo" class="startup-logo">
-
-        <div class="startup-title"><h3>UpSchool</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Helped define their user acquisition funnel and develop a scalable growth plan for their platform.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/india-against-covid.png" alt="India Against Covid logo" class="startup-logo">
-
-        <div class="startup-title"><h3>India Against Covid</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Advised on their partnership strategy, enabling them to expand their reach across India.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/justmyroots.png" alt="JustMyRoots logo" class="startup-logo">
-
-        <div class="startup-title"><h3>JustMyRoots</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Developed a detailed competitor analysis and product roadmap that informed their expansion into new markets.
-
-      </p>
-
-    </div>
-
- 
-
-    <!-- 🔹 Lorem Ipsum placeholders -->
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/placeholder1.png" alt="Startup Placeholder" class="startup-logo">
-
-        <div class="startup-title"><h3>Lorem Startup 1</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit justo id lorem tincidunt, vel iaculis nisi malesuada.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/placeholder2.png" alt="Startup Placeholder" class="startup-logo">
-
-        <div class="startup-title"><h3>Lorem Startup 2</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Aenean id neque ut ante interdum placerat. Phasellus maximus urna in orci ultrices, eget fermentum odio aliquam.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/placeholder3.png" alt="Startup Placeholder" class="startup-logo">
-
-        <div class="startup-title"><h3>Lorem Startup 3</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/placeholder4.png" alt="Startup Placeholder" class="startup-logo">
-
-        <div class="startup-title"><h3>Lorem Startup 4</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/placeholder5.png" alt="Startup Placeholder" class="startup-logo">
-
-        <div class="startup-title"><h3>Lorem Startup 5</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.
-
-      </p>
-
-    </div>
-
- 
-
-    <div class="startup">
-
-      <div class="startup-header">
-
-        <img src="images/startups/placeholder6.png" alt="Startup Placeholder" class="startup-logo">
-
-        <div class="startup-title"><h3>Lorem Startup 6</h3></div>
-
-      </div>
-
-      <p class="startup-description">
-
-        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid ex ea commodi.
-
-      </p>
-
-    </div>
-
- 
-
-  </div>
-
- 
-
-  <div class="carousel-dots" id="startupsDots" aria-label="Startups pagination">
-
-    <button class="carousel-dot" aria-label="Page 1"></button>
-
-    <button class="carousel-dot" aria-label="Page 2"></button>
-
-    <button class="carousel-dot" aria-label="Page 3"></button>
-
-    <button class="carousel-dot" aria-label="Page 4"></button>
-
-    <button class="carousel-dot" aria-label="Page 5"></button>
-
-  </div>
-
 </section>
 
- 
+<style>
+#startupsCarousel::-webkit-scrollbar { display: none; }
+#startupsCarousel { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
 
- 
+<script>
+const slider = document.getElementById('startupsCarousel');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-  <section class="testimonial-section">
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  slider.classList.add('cursor-grabbing');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
 
-  <h2>What Founders Say</h2>
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('cursor-grabbing');
+});
 
-  <div class="hscroll" id="testimonialsCarousel">
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.classList.remove('cursor-grabbing');
+});
 
-   
+slider.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1.8;
+  slider.scrollLeft = scrollLeft - walk;
+});
+</script>
 
-    <!-- ✅ Real testimonials -->
+        <section id="media" class="py-20 bg-white dark:bg-slate-900 pt-28 -mt-8 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
 
-    <div class="testimonial">
-
-      <div class="founder-photo-wrapper">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Tanish Sharma" class="founder-photo">
-
-        <img src="images/startups/billcut.png" alt="BillCut logo" class="startup-overlay">
-
-      </div>
-
-      <p>“The pitch deck Varun helped us build was a game-changer. We got multiple positive responses from investors.”</p>
-
-      <strong>Tanish Sharma</strong><br>
-
-      <em>Co-Founder,</em> BillCut
-
+       <!-- Section Heading -->
+    <div class="mb-12">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
+        Startups in the Media
+      </h2>
+      <div class="w-12 h-0.5 bg-blue-800 dark:bg-blue-500 rounded-full"></div>
     </div>
 
- 
+        <!-- Media Cards -->
+        <div class="grid md:grid-cols-2 gap-10">
 
-    <div class="testimonial">
+            <!-- Card 1 -->
+            <div class="group border border-slate-200 dark:border-slate-700 
+                        bg-white dark:bg-slate-800 
+                        rounded-2xl overflow-hidden 
+                        hover:shadow-xl hover:border-amber-200/40 
+                        dark:hover:border-amber-500/40 
+                        transition-all duration-300 fade-in-up">
 
-      <div class="founder-photo-wrapper">
+                <!-- Image Section -->
+                <div class="relative overflow-hidden">
+                    <!-- Main News Image -->
+                    <img src="BC.png"
+                         alt="BillCut Article"
+                         class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
 
-        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Uddeshya Khanna" class="founder-photo">
+                    <!-- Logo Overlay -->
+                    <div class="absolute top-4 left-4 
+                                bg-white dark:bg-slate-900 
+                                rounded-xl shadow-md 
+                                p-2 border border-slate-200 dark:border-slate-700">
+                        <img src="billcut.png"
+                             alt="BillCut Logo"
+                             class="h-10 w-20 object-contain">
+                    </div>
+                </div>
 
-        <img src="images/startups/upschool.png" alt="UpSchool logo" class="startup-overlay">
+                <!-- Content -->
+                <div class="p-6 space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white leading-snug">
+                        BillCut teams up with Cricketer Venkatesh Iyer to tackle India’s debt woes
+                    </h3>
 
-      </div>
+                    <a href="https://www.medianews4u.com/billcut-teams-up-with-cricketer-venkatesh-iyer-to-tackle-indias-debt-woes/"
+                       class="text-emerald-600 dark:text-emerald-400 
+                              font-medium hover:underline transition" target="_blank" rel="noopener noreferrer">
+                        Read Article →
+                        
+                    </a>
+                </div>
+            </div>
 
-      <p>“Varun helped us create a roadmap to scale our user base. His insights were invaluable.”</p>
 
-      <strong>Uddeshya Khanna</strong><br>
+            <!-- Card 2 -->
+            <div class="group border border-slate-200 dark:border-slate-700 
+                        bg-white dark:bg-slate-800 
+                        rounded-2xl overflow-hidden 
+                        hover:shadow-xl hover:border-amber-200/40 
+                        dark:hover:border-amber-500/40 
+                        transition-all duration-300 fade-in-up">
 
-      <em>Co-Founder,</em> UpSchool
+                <div class="relative overflow-hidden">
+                    <img src="KaranN.png"
+                         alt="JustMyRoots Article"
+                         class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
 
+                    <div class="absolute top-4 left-4 
+                                bg-white dark:bg-slate-900 
+                                rounded-xl shadow-md 
+                                p-2 border border-slate-200 dark:border-slate-700">
+                        <img src="JMR.jpg"
+                             alt="JustMyRoots Logo"
+                             class="h-10 w-20 object-contain">
+                    </div>
+                </div>
+
+                <div class="p-6 space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white leading-snug">
+                        Intercity food delivery startup JustMyRoots buys regional food platform The State Plate
+                    </h3>
+
+                    <a href="https://economictimes.indiatimes.com/news/company/corporate-trends/justmyroots-buys-regional-food-platform-the-state-plate/articleshow/103559461.cms?from=mdr"
+                       class="text-emerald-600 dark:text-emerald-400 
+                              font-medium hover:underline transition" target="_blank" rel="noopener noreferrer">
+                        Read Article →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+       <section id="testimonials" class="py-20 bg-slate-50/70 dark:bg-slate-800/30 transition-colors duration-300 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+    <!-- Section Heading -->
+    <div class="mb-12">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
+        What Founders Say
+      </h2>
+      <div class="w-12 h-0.5 bg-blue-800 dark:bg-blue-500 rounded-full"></div>
     </div>
 
- 
+    <!-- Horizontal Scroll Container -->
+    <div id="startupsCarousel"
+         class="flex gap-6 overflow-x-auto scroll-smooth cursor-grab active:cursor-grabbing pb-4">
 
-    <div class="testimonial">
+      <!-- 1 -->
+      <div class="min-w-[340px] max-w-[380px] border border-slate-200 dark:border-slate-700 
+            bg-white dark:bg-slate-800 rounded-2xl p-6 
+            hover:shadow-lg hover:border-blue-200/40 
+            dark:hover:border-blue-500/40 
+            transition-all duration-300 group 
+            flex flex-col items-center text-center">
 
-      <div class="founder-photo-wrapper">
+  <div class="relative mb-4">
+    <img src="sharma.png" 
+         alt="Tanish Sharma, Co-Founder of BillCut"
+         class="w-40 h-40 rounded-full border-4 border-slate-50 dark:border-slate-700 shadow-inner object-cover">
+    
+    <div class="absolute -bottom-2 -right-2 bg-white rounded-lg shadow-md p-1 border border-slate-100">
+      <img src="billcut.png" 
+           alt="BillCut logo"
+           class="w-20 h-10 object-contain">
+    </div>
+  </div>
 
-        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Vedant Khandelwal" class="founder-photo">
+  <blockquote class="text-base text-slate-800 dark:text-slate-100 font-normal leading-snug">
+    “The pitch deck Varun helped us build was a game-changer. We got multiple positive responses from investors.”
+  </blockquote>
 
-        <img src="images/startups/india-against-covid.png" alt="India Against Covid logo" class="startup-overlay">
+  <div class="mt-5">
+    <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-none">
+      Tanish Sharma
+    </h4>
+    <p class="mt-0 text-sm text-slate-600 dark:text-slate-400 italic">
+      Co-Founder, <span class="not-italic">BillCut</span>
+    </p>
+  </div>
+  
+</div>
 
+      <!-- 2 -->
+    <div class="min-w-[340px] max-w-[380px] border border-slate-200 dark:border-slate-700 
+            bg-white dark:bg-slate-800 rounded-2xl p-6 
+            hover:shadow-lg hover:border-blue-200/40 
+            dark:hover:border-blue-500/40 
+            transition-all duration-300 group 
+            flex flex-col items-center text-center">
+
+  <div class="relative mb-4">
+    <img src="udeshup.png" 
+         alt="Uddeshya Khanna, Co-Founder of upschool"
+         class="w-40 h-40 rounded-full border-4 border-slate-50 dark:border-slate-700 shadow-inner object-cover">
+    
+    <div class="absolute -bottom-2 -right-2 bg-white rounded-lg shadow-md p-1 border border-slate-100">
+      <img src="upschool.png" 
+           alt="upschool logo"
+           class="w-20 h-10 object-contain">
+    </div>
+  </div>
+
+  <blockquote class="text-base text-slate-800 dark:text-slate-100 font-normal leading-snug">
+   “Varun helped us create a roadmap to scale our user base. His insights were invaluable.”
+  </blockquote>
+
+  <div class="mt-5">
+    <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-none">
+      Uddeshya Khanna
+    </h4>
+    <p class="mt-0 text-sm text-slate-600 dark:text-slate-400 italic">
+      Co-Founder, <span class="not-italic">UpSchool</span>
+    </p>
+  </div>
+  
+</div>
+
+      <!-- 3 -->
+      <div class="min-w-[340px] max-w-[380px] border border-slate-200 dark:border-slate-700 
+            bg-white dark:bg-slate-800 rounded-2xl p-6 
+            hover:shadow-lg hover:border-blue-200/40 
+            dark:hover:border-blue-500/40 
+            transition-all duration-300 group 
+            flex flex-col items-center text-center">
+
+  <div class="relative mb-4">
+    <img src="vedant.png" 
+         alt="Vedant, Co-Founder of India Against Covid"
+         class="w-40 h-40 rounded-full border-4 border-slate-50 dark:border-slate-700 shadow-inner object-cover">
+    
+    <div class="absolute -bottom-2 -right-2 bg-white rounded-lg shadow-md p-1 border border-slate-100">
+      <img src="IAC.png" 
+           alt="India Against Covid logo"
+           class="w-20 h-10 object-contain">
+    </div>
+  </div>
+
+  <blockquote class="text-base text-slate-800 dark:text-slate-100 font-normal leading-snug">
+    “Varun's strategic advice helped us form crucial partnerships and amplify our impact during a critical time.”
+  </blockquote>
+
+  <div class="mt-5">
+    <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-none">
+      Vedant Khandelwal
+    </h4>
+    <p class="mt-0 text-sm text-slate-600 dark:text-slate-400 italic">
+      Founder, <span class="not-italic">India Against Covid</span>
+    </p>
+  </div>
+  
+</div>
+
+      <!-- 4 -->
+     <div class="min-w-[340px] max-w-[380px] border border-slate-200 dark:border-slate-700 
+            bg-white dark:bg-slate-800 rounded-2xl p-6 
+            hover:shadow-lg hover:border-blue-200/40 
+            dark:hover:border-blue-500/40 
+            transition-all duration-300 group 
+            flex flex-col items-center text-center">
+
+  <div class="relative mb-4">
+    <img src="karan.png" 
+         alt="Karan, Co-Founder of JustMyRoots"
+         class="w-40 h-40 rounded-full border-4 border-slate-50 dark:border-slate-700 shadow-inner object-cover">
+    
+    <div class="absolute -bottom-2 -right-2 bg-white rounded-lg shadow-md p-1 border border-slate-100">
+      <img src="JMR.jpg" 
+           alt="JustMyRoots logo"
+           class="w-20 h-10 object-contain">
+    </div>
+  </div>
+
+  <blockquote class="text-base text-slate-800 dark:text-slate-100 font-normal leading-snug">
+    “Varun's market analysis was a huge asset. It gave us a clear direction for our next phase of growth.”
+  </blockquote>
+
+  <div class="mt-6">
+    <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-none">
+      Karan Sachdeva
+    </h4>
+    <p class="mt-0 text-sm text-slate-600 dark:text-slate-400 italic">
+      Founding Member, <span class="not-italic">JustMyRoots</span>
+    </p>
+  </div>
+  
+</div>
+
+      <!-------5---------- 
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="images/startups/placeholder1.png" alt="Startup logo"
+               class="w-12 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            GrowthLabs
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+          Optimized user onboarding flow and improved activation rates.
+        </p>
       </div>
 
-      <p>“Varun's strategic advice helped us form crucial partnerships and amplify our impact during a critical time.”</p>
-
-      <strong>Vedant Khandelwal</strong><br>
-
-      <em>Founder,</em> India Against Covid
-
-    </div>
-
- 
-
-    <div class="testimonial">
-
-      <div class="founder-photo-wrapper">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Karan Sachdeva" class="founder-photo">
-
-        <img src="images/startups/justmyroots.png" alt="JustMyRoots logo" class="startup-overlay">
-
+      -----------6----------
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="images/startups/placeholder2.png" alt="Startup logo"
+               class="w-12 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            ScaleEdge
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+          Designed GTM plan leading to strong early traction.
+        </p>
       </div>
 
-      <p>“Varun's market analysis was a huge asset. It gave us a clear direction for our next phase of growth.”</p>
-
-      <strong>Karan Sachdeva</strong><br>
-
-      <em>Founding Member,</em> JustMyRoots
-
-    </div>
-
- 
-
-    <!-- 🔹 Lorem Ipsum placeholders -->
-
-    <div class="testimonial">
-
-      <div class="founder-photo-wrapper">
-
-        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Placeholder founder" class="founder-photo">
-
-        <img src="images/startups/placeholder1.png" alt="Placeholder logo" class="startup-overlay">
-
+      ------------7----------
+      <div class="min-w-[420px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 hover:shadow-lg hover:border-blue-200/40 dark:hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <img src="images/startups/placeholder3.png" alt="Startup logo"
+               class="w-12 h-12 rounded-lg object-contain bg-slate-50 dark:bg-slate-700 p-2">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300 transition-colors">
+            MarketNova
+          </h3>
+        </div>
+        <p class="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+          Structured growth experiments to accelerate revenue scaling.
+        </p>
       </div>
-
-      <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error.”</p>
-
-      <strong>Jane Doe</strong><br>
-
-      <em>Co-Founder,</em> Lorem Startup 1
+    -->
 
     </div>
+  </div>
+</section>
 
- 
+<style>
+#startupsCarousel::-webkit-scrollbar { display: none; }
+#startupsCarousel { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
 
-    <div class="testimonial">
+<script>
+//const slider = document.getElementById('startupsCarousel');
+//let isDown = false;
+//let startX;
+//let scrollLeft;
 
-      <div class="founder-photo-wrapper">
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  slider.classList.add('cursor-grabbing');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
 
-        <img src=https://cdn-icons-png.flaticon.com/512/2922/2922506.png alt="Placeholder found
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('cursor-grabbing');
+});
 
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.classList.remove('cursor-grabbing');
+});
 
+slider.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1.8;
+  slider.scrollLeft = scrollLeft - walk;
+});
+</script>
+        <section id="connect" class="py-24 bg-white dark:bg-slate-900 pt-28 -mt-8 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+
+        <!-- Centered Heading -->
+        <!-- Section Heading -->
+    <div class="mb-12">
+      <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
+        What Founders Say
+      </h2>
+      <p><b>Fill this out if you’d like to chat about your idea, startup, or project.</b></p>
+      <div class="w-12 h-0.5 bg-blue-800 dark:bg-blue-500 rounded-full"></div>
+    </div>
+
+        <!-- Full Width Form -->
+        <div class="border border-slate-200 dark:border-slate-700 
+                    bg-slate-100/70 dark:bg-slate-800/60 
+                    shadow-sm rounded-2xl p-10 fade-in-up">
+
+            <form id="contact-form" class="space-y-8">
+
+                <!-- Row 1 -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" id="name" required
+                        placeholder="Your Name"
+                        class="h-14 w-full rounded-xl border 
+                        border-slate-300 dark:border-slate-700
+                        bg-white dark:bg-slate-900
+                        px-5 text-base
+                        text-slate-900 dark:text-white
+                        placeholder:text-slate-500 dark:placeholder:text-slate-400
+                        focus:outline-none focus:ring-2 
+                        focus:ring-blue-800/20 dark:focus:ring-blue-500/40
+                        transition-all duration-200" />
+
+                    <input type="email" id="email" required
+                        placeholder="Email"
+                        class="h-14 w-full rounded-xl border 
+                        border-slate-300 dark:border-slate-700
+                        bg-white dark:bg-slate-900
+                        px-5 text-base
+                        text-slate-900 dark:text-white
+                        placeholder:text-slate-500 dark:placeholder:text-slate-400
+                        focus:outline-none focus:ring-2 
+                        focus:ring-blue-800/20 dark:focus:ring-blue-500/40
+                        transition-all duration-200" />
+                </div>
+
+                <!-- Row 2 -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" id="startup" required
+                        placeholder="Startup / Project Name"
+                        class="h-14 w-full rounded-xl border 
+                        border-slate-300 dark:border-slate-700
+                        bg-white dark:bg-slate-900
+                        px-5 text-base
+                        text-slate-900 dark:text-white
+                        placeholder:text-slate-500 dark:placeholder:text-slate-400
+                        focus:outline-none focus:ring-2 
+                        focus:ring-blue-800/20 dark:focus:ring-blue-500/40
+                        transition-all duration-200" />
+
+                    <input type="text" id="product" required
+                        placeholder="What does your product do? (one-liner)"
+                        class="h-14 w-full rounded-xl border 
+                        border-slate-300 dark:border-slate-700
+                        bg-white dark:bg-slate-900
+                        px-5 text-base
+                        text-slate-900 dark:text-white
+                        placeholder:text-slate-500 dark:placeholder:text-slate-400
+                        focus:outline-none focus:ring-2 
+                        focus:ring-blue-800/20 dark:focus:ring-blue-500/40
+                        transition-all duration-200" />
+                </div>
+
+                <!-- Message -->
+                <textarea id="message" rows="7" required
+                    placeholder="Tell me a bit more..."
+                    class="w-full rounded-xl border 
+                    border-slate-300 dark:border-slate-700
+                    bg-white dark:bg-slate-900
+                    px-5 py-4 text-base
+                    text-slate-900 dark:text-white
+                    placeholder:text-slate-500 dark:placeholder:text-slate-400
+                    focus:outline-none focus:ring-2 
+                    focus:ring-blue-800/20 dark:focus:ring-blue-500/40
+                    resize-none transition-all duration-200"></textarea>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full h-16 rounded-xl 
+                    bg-slate-900 dark:bg-blue-600
+                    text-white text-lg font-semibold
+                    hover:bg-slate-900/90 dark:hover:bg-blue-700
+                    transition-all duration-200">
+                    Submit
+                </button>
+
+                <!-- Success Message -->
+                <div id="success-toast"
+                    class="hidden mt-4 p-4 bg-emerald-50 dark:bg-emerald-900/30 
+                    text-emerald-800 dark:text-emerald-400 
+                    border border-emerald-200 dark:border-emerald-800/50 
+                    rounded-lg text-sm text-center">
+                    Message sent successfully! I'll get back to you soon.
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+    <footer class="py-10 bg-slate-900 dark:bg-slate-950 text-slate-400">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="text-center sm:text-left">
+                    <p class="font-serif text-base font-semibold text-white mb-1">Varun Oberoi</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-600">© <span id="current-year"></span> All rights reserved.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="mailto:oberoivarun99@gmail.com" class="w-9 h-9 rounded-lg bg-slate-800 dark:bg-slate-900 flex items-center justify-center hover:bg-slate-700 dark:hover:bg-slate-800 transition-colors duration-200" title="Email">
+                        <i data-lucide="mail" class="h-4 w-4 text-slate-400 hover:text-white"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/oberoivarun/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 dark:bg-slate-900 flex items-center justify-center hover:bg-slate-700 dark:hover:bg-slate-800 transition-colors duration-200" title="LinkedIn">
+                        <i data-lucide="linkedin" class="h-4 w-4 text-slate-400 hover:text-white"></i>
+                    </a>
+                   
+                    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="w-9 h-9 rounded-lg bg-slate-800 dark:bg-slate-900 flex items-center justify-center hover:bg-slate-700 dark:hover:bg-slate-800 transition-colors duration-200 ml-2" title="Back to top">
+                        <i data-lucide="arrow-up" class="h-4 w-4 text-slate-400"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+        
+        // Set dynamic year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Dark Mode Logic ---
+        const themeToggleDarkIcons = document.querySelectorAll('#theme-toggle-dark-icon, #theme-toggle-dark-icon-mobile');
+        const themeToggleLightIcons = document.querySelectorAll('#theme-toggle-light-icon, #theme-toggle-light-icon-mobile');
+
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcons.forEach(icon => icon.classList.remove('hidden'));
+        } else {
+            themeToggleDarkIcons.forEach(icon => icon.classList.remove('hidden'));
+        }
+
+        const themeToggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // toggle icons
+                themeToggleDarkIcons.forEach(icon => icon.classList.toggle('hidden'));
+                themeToggleLightIcons.forEach(icon => icon.classList.toggle('hidden'));
+
+                // if set via local storage previously
+                if (localStorage.getItem('color-theme')) {
+                    if (localStorage.getItem('color-theme') === 'light') {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                // if NOT set via local storage previously
+                } else {
+                    if (document.documentElement.classList.contains('dark')) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    }
+                }
+            });
+        });
+
+        // --- Scroll Animations Setup ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        document.querySelectorAll('.fade-in-up').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // --- Header Scroll Effects & Active Nav Links ---
+        const header = document.getElementById('main-header');
+        const progressBar = document.getElementById('scroll-progress');
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+        window.addEventListener('scroll', () => {
+            // Header Background
+            if (window.scrollY > 20) {
+                header.classList.add('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-sm', 'border-b', 'border-slate-200/80', 'dark:border-slate-800/80', 'shadow-sm');
+                header.classList.remove('bg-transparent');
+            } else {
+                header.classList.remove('bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-sm', 'border-b', 'border-slate-200/80', 'dark:border-slate-800/80', 'shadow-sm');
+                header.classList.add('bg-transparent');
+            }
+
+            // Scroll Progress
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+            progressBar.style.width = `${progress}%`;
+
+            // Active Section Highlight
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-blue-800', 'dark:text-blue-400', 'font-medium', 'bg-blue-50/60', 'dark:bg-blue-900/30');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('text-blue-800', 'dark:text-blue-400', 'font-medium', 'bg-blue-50/60', 'dark:bg-blue-900/30');
+                }
+            });
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // --- Contact Form Submission ---
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnIcon = document.getElementById('btn-icon');
+        const successToast = document.getElementById('success-toast');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // UI Loading state
+            submitBtn.disabled = true;
+            btnText.textContent = "Sending...";
+            btnIcon.style.display = "none";
+            successToast.classList.add('hidden');
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            // Simulate network delay (800ms)
+            setTimeout(() => {
+                const messages = JSON.parse(localStorage.getItem("contact_messages") || "[]");
+                messages.push({ ...formData, timestamp: new Date().toISOString() });
+                localStorage.setItem("contact_messages", JSON.stringify(messages));
+
+                // Reset UI
+                contactForm.reset();
+                submitBtn.disabled = false;
+                btnText.textContent = "Submit";
+                btnIcon.style.display = "inline-block";
+                
+                // Show Success Toast
+                successToast.classList.remove('hidden');
+                setTimeout(() => {
+                    successToast.classList.add('hidden');
+                }, 4000);
+            }, 800);
+        });
+    </script>
+</body>
+</html>
